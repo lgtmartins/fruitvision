@@ -1,6 +1,6 @@
 flask
 flask-cors
-ultralytics
+ultralytics>=8.4   # YOLO26; instala o PyTorch junto
 opencv-python
 pillow
 numpy

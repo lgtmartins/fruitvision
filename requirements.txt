@@ -1,5 +1,5 @@
 # Treinamento / auditoria (training/)
-ultralytics
+ultralytics>=8.4   # YOLO26; instala o PyTorch junto
 pillow
 numpy
 opencv-python
