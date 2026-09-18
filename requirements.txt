@@ -1,0 +1,9 @@
+# Treinamento / auditoria (training/)
+ultralytics
+pillow
+numpy
+opencv-python
+
+# Backend / API (backend/)
+flask
+flask-cors

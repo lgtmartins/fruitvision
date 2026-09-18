@@ -1,0 +1,18 @@
+# Ambiente
+.venv/
+__pycache__/
+
+# Saídas do Ultralytics: versionamos só o treino final (pesos + gráficos +
+# métricas), que é o que o backend usa e o que vai no relatório.
+runs/*
+!runs/fruitvision_yolo26n_scratch/
+runs/fruitvision_yolo26n_scratch/weights/last.pt
+
+# Saídas geradas em runtime
+backend/uploads/
+backend/results/
+database/fruitvision.db
+*.zip
+
+# Cache de labels gerado pelo Ultralytics
+*.cache
