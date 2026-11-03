@@ -96,6 +96,53 @@ function formatDate(iso) {
   return date.toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
 }
 
+/* ---------------- tema claro/escuro ---------------- */
+
+/*
+ * O tema inicial é aplicado por um script no <head> do index.html, para a
+ * página não piscar branco ao abrir no modo escuro. Aqui só tratamos o botão.
+ * Sem escolha salva, o site acompanha a configuração do sistema.
+ */
+
+const TEMA_CHAVE = "fruitvision-tema";
+const themeBtn = $("theme-btn");
+
+function temaSalvo() {
+  try {
+    return localStorage.getItem(TEMA_CHAVE);
+  } catch (e) {
+    return null; // navegador com armazenamento bloqueado
+  }
+}
+
+function temaDoSistema() {
+  return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function aplicarTema(tema) {
+  document.documentElement.dataset.theme = tema;
+  const proximo = tema === "dark" ? "claro" : "escuro";
+  themeBtn.title = `Mudar para o tema ${proximo}`;
+  themeBtn.setAttribute("aria-label", `Mudar para o tema ${proximo}`);
+}
+
+themeBtn.addEventListener("click", () => {
+  const novo = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  aplicarTema(novo);
+  try {
+    localStorage.setItem(TEMA_CHAVE, novo);
+  } catch (e) {
+    /* sem armazenamento: o tema vale só até recarregar a página */
+  }
+});
+
+// enquanto o usuário não escolher, segue o sistema mesmo se ele mudar com a página aberta
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+  if (!temaSalvo()) aplicarTema(temaDoSistema());
+});
+
+aplicarTema(temaSalvo() || temaDoSistema());
+
 /* ---------------- abas ---------------- */
 
 const TABS = {

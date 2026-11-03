@@ -23,7 +23,7 @@ equipe, sem pesos pré-treinados e sem nenhuma API de IA externa.
 
 ## Equipe
 
-| Integrante |
+| Integrantes |
 |---|
 | Luiz Guilherme Tiritan Martins |
 | Pedro Guermandi Bressan |
@@ -543,7 +543,10 @@ Abra `http://localhost:5500` no navegador. A interface permite:
 - ajustar o limiar de confiança mínima;
 - consultar o histórico, abrir os detalhes de cada análise e excluí-la;
 - ver as estatísticas: total de frutas, espécies detectadas e confiança média;
-- usar em modo claro ou escuro (segue o sistema) e no celular.
+- alternar entre o tema claro e o escuro pelo botão do cabeçalho; sem escolha
+  manual, o site segue a configuração do sistema, e a escolha fica salva no
+  navegador;
+- usar no celular.
 
 ### Fluxo completo, resumido
 
